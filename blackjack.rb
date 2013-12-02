@@ -21,6 +21,10 @@ require_relative 'dealer'
      dealer.determine_winner
      dealer.ask_player_to_play_again
     end  
+    
+  if entered_choice == "3"
+    puts "Thanks for Playing!"
+  end
 
   
 
