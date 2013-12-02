@@ -5,6 +5,7 @@ class Dealer
   
     attr_accessor :dealer_score
   
+  
   def intialize(dealer_score=0)
     @dealer_score = dealer_score
   end
@@ -20,9 +21,11 @@ class Dealer
      
   end
   
+  
   def deal_cards
-    @starting_dealer_hand = face_value[0..3]
-    @starting_player_hand = face_value[0..1] 
+    cards = Deck.shuffle
+    @starting_dealer_hand = cards[0..3]
+    @starting_player_hand = cards[0..1] 
   end
   
   def calculate_player_hand_count
@@ -42,6 +45,19 @@ class Dealer
       puts "Congratualtions You have Won!"
     end
       
+  end
+  
+  def ask_player_to_play_again
+    puts "Would You like to Play again?"
+    answer = gets.chomp
+    answer.downcase
+    if answer == "no"
+      Player.quit
+      elsif answer == "yes"
+        puts"Enter 1 to hit, Enter 2 to stay, Enter 3 to quit"
+        else
+          puts "You must Enter Yes or No"
+      end 
   end
   
 end

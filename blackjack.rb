@@ -10,7 +10,17 @@ require_relative 'dealer'
   dealer = Dealer.new
 
   dealer.say_intro(entered_name)  
-    
+  
+  puts "Enter Your Choice"
+  entered_choice = gets.chomp
+  while entered_choice != "3" do
+     player.make_choice(entered_choice)
+     dealer.deal_cards
+     dealer.calculate_player_hand_count
+     dealer.get_dealer_total
+     dealer.determine_winner
+     dealer.ask_player_to_play_again
+    end  
 
   
 

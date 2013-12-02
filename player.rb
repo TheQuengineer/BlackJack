@@ -2,21 +2,23 @@ require_relative 'dealer'
 
 class Player
     attr_accessor :name, :score_total
+    attr_reader :choice
   
-  def initialize(name, score_total=0, current_hand_count=0)
+  def initialize(name, score_total=0, current_hand_count=0, choice="")
     @name = name 
     @score_total = score_total
     @current_hand_count = current_hand_count
+    @choice = choice
   end
   
   def make_choice(choice)
-    choice = gets.chomp
+      choice = gets.chomp
      case 
-       when @choice == "1"
+       when choice == "1"
         hit
-       when @choice == "2"
+       when choice == "2"
         stay 
-       when @choice == "3"
+       when choice == "3"
          quit
        else
          puts "You did not Enter one of the choices Please Enter 1, 2, or 3"
@@ -32,7 +34,7 @@ class Player
   end
   
   def quit
-    #break
+    exit
   end
   
    
