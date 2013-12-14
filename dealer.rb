@@ -5,9 +5,10 @@ class Dealer
   
     attr_accessor :dealer_score
   
-  
-  def intialize(dealer_score=0)
+  def intialize(dealer_score=0, player_cards=[], dealer_cards=[])
     @dealer_score = dealer_score
+    @player_cards = player_cards
+    @dealer_cards = dealer_cards
   end
   
   
@@ -21,21 +22,25 @@ class Dealer
      
   end
   
-  
-  def deal_cards
-    cards = Deck.shuffle
-    @starting_dealer_hand = cards[0..3]
-    @starting_player_hand = cards[0..1] 
+  def say_players_card_value_total
+    puts "Your current card value total is #{@starting_player_hand}" 
   end
   
-  def calculate_player_hand_count
-    starting_player_hand.inject{|sum,x| sum + x}
+  
+  def deal_cards
+      Deck.shuffle
+      player_cards = select_player_cards
+      dealer_cards = select_dealer_cards
+  end
+  
+  def self.calculate_player_hand_count(player_cards)
+    player_cards.inject{|sum,x| sum + x}
     puts "Your total card amount is #{sum.to_s}"
-    return sum
+    #return sum
   end
   
   def get_dealer_total
-    dealer_score = @starting_dealer_hand.inject{|sum, x| sum + x}
+    dealer_score = dealer_cards.inject{|sum, x| sum + x}
   end
   
   def determine_winner

@@ -1,7 +1,8 @@
 require_relative 'dealer'
+require_relative 'deck'
 
 class Player
-    attr_accessor :name, :score_total
+    attr_accessor :name, :score_total, :current_hand_count
     attr_reader :choice
   
   def initialize(name, score_total=0, current_hand_count=0, choice="")
@@ -15,7 +16,7 @@ class Player
       choice = gets.chomp
      case 
        when choice == "1"
-        hit
+        hit(current_hand_count)
        when choice == "2"
         stay 
        when choice == "3"
@@ -25,12 +26,14 @@ class Player
        end
   end
   
-  def hit
-    score_total = current_hand_count + Dealer.calculate_player_hand_count.to_i   
+  def hit(current_hand_count)
+    score_total += Dealer.calculate_player_hand_count.to_i
+    puts "Your card count so far is #{current_hand_count.to_s}"  
+    puts "After hit your total is #{score_total}"  
   end
   
   def stay
-    puts "Your count is #{current_hand_count}"
+    puts "Your count is #{score_total}"
   end
   
   def quit

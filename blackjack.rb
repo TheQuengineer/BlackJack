@@ -15,11 +15,12 @@ require_relative 'dealer'
   entered_choice = gets.chomp
   while entered_choice != "3" do
      player.make_choice(entered_choice)
-     dealer.deal_cards
-     dealer.calculate_player_hand_count
-     dealer.get_dealer_total
-     dealer.determine_winner
-     dealer.ask_player_to_play_again
+     # dealer.deal_cards
+     #      dealer.say_players_card_value_total
+     #      dealer.calculate_player_hand_count
+     #      dealer.get_dealer_total
+     #      dealer.determine_winner
+     #      dealer.ask_player_to_play_again
     end  
     
   if entered_choice == "3"
